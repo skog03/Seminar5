@@ -6,6 +6,10 @@ import java.util.Random;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import lv.venta.demo.lv.venta.model.Product;
+
 
 
 
@@ -27,6 +31,15 @@ public class firstController
         model.addAttribute("mypackage", "Hello from JAVA: " + rand.nextInt(0, 100));
         return "hello-msg-page"; //will show hello-msg-page.html file in browser
     }
+
+    @GetMapping("/product/test") //localhost:8080/product/test
+    public String getProduceTest(Model model) {
+        System.out.println("Third controller is working");
+        Product p = new Product("Apple", "red", 0.99f, 4);
+        model.addAttribute("mypackage", p);
+        return "show-one-product-page"; //will show hello-msg-page.html file in browser
+    }
+    
     
     
 }
